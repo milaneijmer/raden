@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raad het getal</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<style>
+        
+    
+</style>
+<body>
+    <h1>Raad het getal</h1>
+    <div class="invoer">
+        <p id="geef">Geef een getal in tussen 1 en 10</p>
+        <input type="text" name="input" id="input" placeholder="getal...">
+        <input type="button" value="Raad het getal" id="raad">
+        <br>
+        <p id="hint"></p>
+    </div>
+    <div class="resultaat"></div>
+</body>
+<script>
+      $(document).ready()
+    {
+        let random = Math.floor(Math.random() * 10) +1
+        
+        let tel = 0
+    
+        $("#raad").on('click', function()
+        {
+            let getal = document.getElementById('input').value
+            console.log(tel)
+            console.log(random)
+            console.log(getal)
+            tel++;
+            if(getal > random)
+            {
+                $("#hint").text("Helaas, getal is lager")
+            }
+            else if(getal < random)
+            {
+                $("#hint").text("Helaas, getal is hoger")
+            }
+
+            if(tel == 3 && getal != random)
+            {   $("#hint").text("Helaas, je hebt het getal niet geraden")
+                $("#hint").css("color", "red")
+                $("#hint").animate({"font-size": "50px"},300)
+                $("#geef").text("Het getal was " + random)
+                $("#raad").prop('disabled', true)
+            }
+          
+
+            if(getal == random)
+            {
+                $("#hint").text("Je hebt het getal geraden!")
+                $("#hint").css("color", "green")
+                $("#hint").animate({"font-size": "50px"},300)
+                $("#raad").prop('disabled', true)
+            }
+            
+           
+
+
+            
+        })
+    }
+</script>
+</html>
